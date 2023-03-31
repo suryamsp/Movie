@@ -1,10 +1,19 @@
 import { useParams, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
-export function Movieurl({ moviedetails }) {
+export function Movieurl() {
   const { url } = useParams();
-  const moviepage = moviedetails[url];
+  // const moviepage = moviedetails[url];
   // console.log(moviedetails);
+
+  const [moviepage, setmoviepage] = useState({});
+useEffect(()=>{ 
+  fetch(`https://642594217ac292e3cf04af7d.mockapi.io/movieapi/${url}`)
+   .then((data) => data.json())
+   .then((mvs) => setmoviepage(mvs));},[]);
+
   const navigate = useNavigate();
+
   return (
     <div className='main-contain-details'>
       <iframe
