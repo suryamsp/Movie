@@ -12,6 +12,7 @@ import Paper from '@mui/material/Paper';
 import { margin } from '@mui/system';
 import { Movieurl } from './Movieurl';
 import { Addmovie } from './Addmovie';
+import { Basicform } from './Basicform';
 // import Brightness7Icon from '@mui/icons-material/Brightness7';
 // import Brightness4Icon from '@mui/icons-material/Brightness4';
 
@@ -37,7 +38,7 @@ const darkTheme = createTheme({
 
 return(
   <ThemeProvider theme={darkTheme}>
-    <Paper sx={bgsty} elevation={40} >
+    <Paper sx={bgsty} elevation={4} >
   <div className='App'>
      <AppBar position="static">
         <Toolbar>
@@ -45,6 +46,7 @@ return(
           <Button onClick={()=> navigate("/movielist")} color="inherit">Movielist</Button>
           <Button onClick={()=> navigate("/addcolor")} color="inherit">Addcolor</Button>
           <Button onClick={()=> navigate("*")} color="inherit">Notfound</Button>
+          <Button onClick={()=> navigate("/basicform")} color="inherit">Basicform</Button>
           <Button onClick={()=> navigate("/addmovie")} color="inherit">Addmovie</Button>
           <Button onClick={()=> navigate("")} color="inherit">Login</Button>
         
@@ -75,8 +77,9 @@ return(
     <Route path="/movielist" element={<Movielist />} />
     <Route path="/movielist/:url" element={<Movieurl moviedetails={moviedetails} />} />
     <Route path="/addcolor" element={<Addcolor />} />
-    <Route path="/addmovie" element={<Addmovie  moviedetails={moviedetails} setmoviedetails={setmoviedetails} />} />
+    <Route path="/addmovie" element={<Addmovie moviedetails={moviedetails} setmoviedetails={setmoviedetails}/>} />
     <Route path="*" element={<Notfound />} />
+    <Route path="/basicform" element={<Basicform />} />
   </Routes>
  {/* <Movielist moviedetails={moviedetails} setmoviedetails={setmoviedetails}/> */}
  {/* <Home /> */}
@@ -100,5 +103,6 @@ function Home(){
     </div>
   );
 }
+
 
 
