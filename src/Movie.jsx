@@ -1,8 +1,9 @@
 import { useState , useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Counter } from './Counter';
+import { Editmovie } from './Editmovie';
 
-export function Movie({data, id, deletebutton}) {
+export function Movie({data, id, deletebutton ,editbutton}) {
   // const design={
   //   color:"green"
   //   // backgroundColor="orange"
@@ -18,7 +19,7 @@ export function Movie({data, id, deletebutton}) {
         <p style={{ color: data.rating > 8.5 ? "green" : "red" }} className='movie-rating'>⭐{data.rating}</p>
 
       </div>
-      <Counter /> {deletebutton}
+      <Counter /> {deletebutton} {editbutton}
      
       <button onClick={() => navigate(`/movielist/${id}`)}>button</button>
     </div>

@@ -10,7 +10,7 @@ export function Movieurl() {
 useEffect(()=>{ 
   fetch(`https://642594217ac292e3cf04af7d.mockapi.io/movieapi/${url}`)
    .then((data) => data.json())
-   .then((mvs) => setmoviepage(mvs));},[]);
+   .then((mvs) => setmoviepage(mvs));},[id]);
 
   const navigate = useNavigate();
 

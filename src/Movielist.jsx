@@ -1,6 +1,7 @@
 import { Movie } from './Movie';
 import { Addmovie } from './Addmovie';
 import { useState , useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export function Movielist() {
   const [moviedetails, setmoviedetails] = useState([]);
@@ -24,6 +25,8 @@ useEffect(()=> getmovie(),[]);
   //    getmovie();
   //  };
 
+  const navigate=useNavigate();
+
   return (
     <div>
       <div className='movie-data'>
@@ -32,6 +35,7 @@ useEffect(()=> getmovie(),[]);
         data={mv} 
         id={mv.id}
         deletebutton={<button onClick={()=> deletemovie(mv.id)}>Delete</button>}
+        editbutton={<button onClick={()=> navigate(`/movielist/edit/${mv.id}`)}>Edit</button>}
         />))}
         
       </div>

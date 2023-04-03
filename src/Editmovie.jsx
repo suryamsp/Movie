@@ -1,6 +1,6 @@
-import { useState} from 'react';
+import { useState , useEffect} from 'react';
 import TextField from '@mui/material/TextField';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as yup from "yup";
 
@@ -12,27 +12,43 @@ const formValidation=yup.object({
 });
 
 
-export function Addmovie() {
-  // const [name, setname] = useState("");
-  // const [poster, setposter] = useState("");
-  // const [rating, setrating] = useState("");
-  // const [trailer, settrailer] = useState("");
+export function Editmovie() {
+
+  const { url } = useParams();
+  // const moviepage = moviedetails[url];
+  // console.log(moviedetails);
+
+  const [moviepage, setmoviepage] = useState(null);
+useEffect(()=>{ 
+  fetch(`https://642594217ac292e3cf04af7d.mockapi.io/movieapi/${url}`)
+   .then((data) => data.json())
+   .then((mvs) => setmoviepage(mvs));},[]);
+
+   console.log(moviepage);
+   return moviepage ? <Editmovieform moviepage={moviepage} /> : <img src='https://media.tenor.com/YPOStjIfQ2IAAAAM/loading-waiting.gif' />;
+  
+function Editmovieform({moviepage}){
   const formik=useFormik({
-    initialValues:{ name:"", poster:"", rating:"", trailer:""},
+    initialValues:{ 
+    name:moviepage.name, 
+    poster:moviepage.poster, 
+    rating:moviepage.rating, 
+    trailer:moviepage.trailer,
+  },
     validationSchema:formValidation,
     // newmovie object create formil so canot manuvally 
-    onSubmit: (newmovie) => {
-      addmovie(newmovie);
+    onSubmit: (savemovie) => {
+      updatemovie(savemovie);
     },
   });
 
 const navigate=useNavigate();
 
-  const addmovie= async (newmovie)=>{ 
+  const updatemovie= async (savemovie)=>{ 
 
- await fetch("https://642594217ac292e3cf04af7d.mockapi.io/movieapi" ,{
-    method:"POST",
-    body:JSON.stringify(newmovie),
+ await fetch(`https://642594217ac292e3cf04af7d.mockapi.io/movieapi/${moviepage.id}` ,{
+    method:"PUT",
+    body:JSON.stringify(savemovie),
     headers:{"Content-Type":"application/json",},
   });
   navigate("/movielist");
@@ -63,14 +79,13 @@ const navigate=useNavigate();
       variant="outlined" 
       error={formik.touched.poster && formik.errors.poster}
       helperText={formik.touched.poster && formik.errors.poster ? formik.errors.poster : null}
-
       />
 
       <TextField 
       name="rating"
       onChange={formik.handleChange}
       onBlur={formik.handleBlur}
-      value={formik.values.trailer} 
+      value={formik.values.rating} 
       label="Rating" 
       variant="outlined"
       error={formik.touched.rating && formik.errors.rating}
@@ -93,8 +108,8 @@ const navigate=useNavigate();
       {/* {formik.touched.trailer && formik.errors.trailer ? formik.errors.trailer : null} */}
 
 
-      <button type="submit">Add movie</button>
+      <button type="submit">Update movie</button>
     </form>
   );
 }
-
+}

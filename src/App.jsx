@@ -13,6 +13,7 @@ import { margin } from '@mui/system';
 import { Movieurl } from './Movieurl';
 import { Addmovie } from './Addmovie';
 import { Basicform } from './Basicform';
+import { Editmovie } from './Editmovie';
 // import Brightness7Icon from '@mui/icons-material/Brightness7';
 // import Brightness4Icon from '@mui/icons-material/Brightness4';
 
@@ -80,6 +81,7 @@ return(
     <Route path="/addmovie" element={<Addmovie moviedetails={moviedetails} setmoviedetails={setmoviedetails}/>} />
     <Route path="*" element={<Notfound />} />
     <Route path="/basicform" element={<Basicform />} />
+    <Route path="/movielist/edit/:url" element={<Editmovie/>} />
   </Routes>
  {/* <Movielist moviedetails={moviedetails} setmoviedetails={setmoviedetails}/> */}
  {/* <Home /> */}
@@ -91,7 +93,7 @@ return(
 
 function Notfound(){
   return(
-    <div>
+    <div className='notfound'>
       <img src='https://kfg6bckb.media.zestyio.com/yalantis-interactive-404.gif'/>
     </div>
   );
