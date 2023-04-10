@@ -1,5 +1,7 @@
 import { useFormik } from "formik";
 import * as yup from "yup";
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
 const formValidation=yup.object({
   email:yup.string().email().required().min(12),
@@ -18,29 +20,29 @@ export function Basicform()
   });
 
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <input 
+    <form className="basic-form" onSubmit={formik.handleSubmit}>
+      <TextField 
       name="email"
       onChange={formik.handleChange}
       onBlur={formik.handleBlur}
       value={formik.values.email} 
       type="text" 
       placeholder="name"
-      ></input>
+      />
       {formik.touched.email && formik.errors.email ? formik.errors.email : null}
-      <input 
+      <TextField 
       name="password"
       onChange={formik.handleChange}
       onBlur={formik.handleBlur}
       value={formik.values.password} 
       type="text" 
       placeholder="password"
-      ></input>
+      />
       {formik.touched.password && formik.errors.password ? formik.errorspassword : null}
-      <button type="submit">submit</button>
-      <pre> {JSON.stringify(formik.values)}</pre>
+      <Button type="submit" variant="contained" >submit</Button>
+      {/* <pre> {JSON.stringify(formik.values)}</pre>
       <pre> {JSON.stringify(formik.errors)}</pre>
-      <pre> {JSON.stringify(formik.touched)}</pre>
+      <pre> {JSON.stringify(formik.touched)}</pre> */}
     </form>
   );
 }

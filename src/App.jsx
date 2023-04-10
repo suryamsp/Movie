@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { ThemeProvider, createTheme } from '@mui/material';
 // import CssBaseline from '@mui/material/CssBaseline';
 import Paper from '@mui/material/Paper';
 import { margin } from '@mui/system';
@@ -14,8 +14,8 @@ import { Movieurl } from './Movieurl';
 import { Addmovie } from './Addmovie';
 import { Basicform } from './Basicform';
 import { Editmovie } from './Editmovie';
-// import Brightness7Icon from '@mui/icons-material/Brightness7';
-// import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
 
 
 export default function App() {
@@ -27,7 +27,7 @@ useEffect(()=>{ fetch("https://642594217ac292e3cf04af7d.mockapi.io/movieapi")
 
 const navigate=useNavigate();
 const [mode,setmode]=useState("light");
-const darkTheme = createTheme({
+const darkTheme =createTheme({
   palette: {
     mode: mode,
   },
@@ -53,7 +53,7 @@ return(
         
           <Button sx={{marginLeft:"auto"}} onClick={()=> setmode(mode=="light" ? "dark" : "light")} color="inherit"
           
-          >{mode=== "light" ? "dark" : "light"} mode</Button>   
+          >{mode== "light" ? <Brightness7Icon /> : <Brightness4Icon />} {mode+" mode"}</Button>   
         </Toolbar>
       </AppBar>
       {/* <nav>
@@ -94,14 +94,14 @@ return(
 function Notfound(){
   return(
     <div className='notfound'>
-      <img src='https://kfg6bckb.media.zestyio.com/yalantis-interactive-404.gif'/>
+      <img src='https://i.pinimg.com/originals/a8/12/1a/a8121abee959e18cbad25ad4046f76d8.gif'/>
     </div>
   );
 }
 function Home(){
   return(
-    <div>
-      <h1>welcome to  home </h1>
+    <div className='home'>
+      <img src="https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/61rK266PEIL._SL1000_.jpg"/>
     </div>
   );
 }

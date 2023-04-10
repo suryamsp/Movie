@@ -9,23 +9,62 @@ object-fit: cover;
 } */
  .main-contain{
   
-  width: 30px;
+  width: 250px;
 
  }
  .movie-poster{
   width: 100%;
-  height: 40px;
+  height: 400px;
   object-fit: cover;
  }
 .movie-spec{
-  display: flex;
-  justify-content: space-between;
+
+ display: flex;
+  margin: 50px;
+  font-size: 30px; 
+  gap: 30px; 
+  justify-content: space-between  ;
 
 }
+.movie-specification{
+  display: flex;
+  justify-content: space-between;
+}
+/* .movie-ratings{
+  margin: 50px;
+  font-size: 30px;
+  justify-content: space-between;
+
+} */
+
+.movie-speci{
+  
+  display: flex;
+  margin-left: 50px;
+  margin-top: 40px;
+  width: fit-content;
+
+
+}
+.backbtn{
+  margin-left: 50px;
+
+}
+
+
 .movie-name{
-  font-size: 24px;
+  font-size:20px;
   margin: 10px;
 }
+.movie-names{
+  font-size: 40px;
+}
+.summary-spec{
+  font-size: 16px;
+  font-style: italic;
+  font-weight: bolder;
+}
+
 .movie-rating{
   font-size: 24px;
   margin: 10px;
@@ -37,7 +76,7 @@ object-fit: cover;
   justify-content: space-around; */
   display: grid;
 /* grid-template-columns: repeat(3,1fr); */
-grid-template-columns: repeat(auto-fit, minmax(340px,1fr));
+grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
 gap: 16px;
 margin-top: 10px;
 }
@@ -46,17 +85,85 @@ body{
   margin: 0px;
 }
 
-.form-design{
-  display:inline-flex;
-    width: 100%;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding: 10px;
-    gap: 10px;
+.form{
+
+display: flex;
+flex-direction: column;
+gap: 10px;
+max-width: 500px;
+margin: 50px auto;
+
+
 
 }
+
 .notfound{
-  width: 10px;
-  height: 10px;
-  /* border-radius: 50%; */
+display: block;
+margin-left: 200px;
+margin-right: auto;
+
+
+}
+.watchbtn{
+  width: 250px;
+}
+.btn{
+  display: flex;
+}
+.main-contain-details{
+margin: 50px;
+
+}
+
+.trailer-details{
+  display: flex;
+}
+
+.edit-form{
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  gap: 10px;
+  margin: 50px auto ;
+}
+.loading{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 250px;
+  width: 50px;
+}
+.home{
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: 600px;
+  height: 600px;
+}
+
+.color-form{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+.addcolor{
+  display: flex;
+  flex-direction: row;
+  border-radius:50% ;
+  width: 50px;
+  height: 50px;
+}
+
+.basic-form{
+display: flex;
+flex-direction: column;
+gap: 10px;
+max-width: 500px;
+margin-left: auto;
+margin-right: auto ;
+margin-top: 50px;
+
 }

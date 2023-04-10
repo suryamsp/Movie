@@ -2,6 +2,7 @@ import { useState , useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Counter } from './Counter';
 import { Editmovie } from './Editmovie';
+import Button from '@mui/material/Button';
 
 export function Movie({data, id, deletebutton ,editbutton}) {
   // const design={
@@ -14,14 +15,14 @@ export function Movie({data, id, deletebutton ,editbutton}) {
   return (
     <div className='main-contain'>
       <img className='movie-poster' src={data.poster} alt={data.name} />
-      <div className='movie-spec'>
+      <div className='movie-specification'>
         <h2 className='movie-name'>{data.name}</h2>
         <p style={{ color: data.rating > 8.5 ? "green" : "red" }} className='movie-rating'>⭐{data.rating}</p>
 
       </div>
-      <Counter /> {deletebutton} {editbutton}
-     
-      <button onClick={() => navigate(`/movielist/${id}`)}>button</button>
+      <div className='btn'><Counter /> {deletebutton} {editbutton}</div>
+
+      <Button className='watchbtn' variant='contained' onClick={() => navigate(`/movielist/${id}`)}>Watch Movie</Button>
     </div>
   );
 }

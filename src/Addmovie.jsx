@@ -3,6 +3,9 @@ import TextField from '@mui/material/TextField';
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as yup from "yup";
+import Button from '@mui/material/Button';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+
 
 const formValidation=yup.object({
   name:yup.string().required().min(4),
@@ -40,7 +43,7 @@ const navigate=useNavigate();
  
 
   return (
-    <form onSubmit={formik.handleSubmit}className='form-design'>
+      <div onSubmit={formik.handleSubmit} className='form'>
       <TextField 
       name="name"
       onChange={formik.handleChange}
@@ -93,8 +96,11 @@ const navigate=useNavigate();
       {/* {formik.touched.trailer && formik.errors.trailer ? formik.errors.trailer : null} */}
 
 
-      <button type="submit">Add movie</button>
-    </form>
+      <Button type="submit" variant='contained' >Add movie</Button>
+      <Button variant='contained' onClick={() => navigate("/movielist")}><ArrowBackIcon />Back</Button>
+
+    </div>
+
   );
 }
 

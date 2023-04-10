@@ -3,6 +3,9 @@ import TextField from '@mui/material/TextField';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as yup from "yup";
+import Button from '@mui/material/Button';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+
 
 const formValidation=yup.object({
   name:yup.string().required().min(4),
@@ -24,8 +27,8 @@ useEffect(()=>{
    .then((data) => data.json())
    .then((mvs) => setmoviepage(mvs));},[]);
 
-   console.log(moviepage);
-   return moviepage ? <Editmovieform moviepage={moviepage} /> : <img src='https://media.tenor.com/YPOStjIfQ2IAAAAM/loading-waiting.gif' />;
+  //  console.log(moviepage);
+   return moviepage ? <Editmovieform moviepage={moviepage} /> : <img className='loading' src="https://i.gifer.com/origin/34/34338d26023e5515f6cc8969aa027bca_w200.gif"/>;
   
 function Editmovieform({moviepage}){
   const formik=useFormik({
@@ -56,7 +59,8 @@ const navigate=useNavigate();
  
 
   return (
-    <form onSubmit={formik.handleSubmit}className='form-design'>
+    
+    <div className="edit-form"  onSubmit={formik.handleSubmit} >
       <TextField 
       name="name"
       onChange={formik.handleChange}
@@ -108,8 +112,10 @@ const navigate=useNavigate();
       {/* {formik.touched.trailer && formik.errors.trailer ? formik.errors.trailer : null} */}
 
 
-      <button type="submit">Update movie</button>
-    </form>
+      <Button type="submit" variant="contained" >Update movie</Button>
+      <Button variant='contained' onClick={() => navigate(-1)}><ArrowBackIcon />Back</Button>
+
+      </div>
   );
 }
 }
