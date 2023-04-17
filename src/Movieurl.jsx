@@ -2,6 +2,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import {API} from "./global";
 
 export function Movieurl() {
   const { url } = useParams();
@@ -10,7 +11,7 @@ export function Movieurl() {
 
   const [moviepage, setmoviepage] = useState({});
 useEffect(()=>{ 
-  fetch(`https://642594217ac292e3cf04af7d.mockapi.io/movieapi/${url}`)
+  fetch(`${API}/${url}`)
    .then((data) => data.json())
    .then((mvs) => setmoviepage(mvs));},[url]);
 

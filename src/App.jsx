@@ -16,11 +16,12 @@ import { Basicform } from './Basicform';
 import { Editmovie } from './Editmovie';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
+import {API} from "./global";
 
 
 export default function App() {
   const [moviedetails, setmoviedetails] = useState([]);
-useEffect(()=>{ fetch("https://642594217ac292e3cf04af7d.mockapi.io/movieapi")
+useEffect(()=>{ fetch(`${API}`)
    .then((data) => data.json())
    .then((mvs) => setmoviedetails(mvs));},[]);
   

@@ -5,6 +5,7 @@ import { useFormik } from 'formik';
 import * as yup from "yup";
 import Button from '@mui/material/Button';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import {API} from "./global";
 
 
 const formValidation=yup.object({
@@ -23,7 +24,7 @@ export function Editmovie() {
 
   const [moviepage, setmoviepage] = useState(null);
 useEffect(()=>{ 
-  fetch(`https://642594217ac292e3cf04af7d.mockapi.io/movieapi/${url}`)
+  fetch(`${API}/${url}`)
    .then((data) => data.json())
    .then((mvs) => setmoviepage(mvs));},[]);
 
@@ -49,7 +50,7 @@ const navigate=useNavigate();
 
   const updatemovie= async (savemovie)=>{ 
 
- await fetch(`https://642594217ac292e3cf04af7d.mockapi.io/movieapi/${moviepage.id}` ,{
+ await fetch(`${API}/${moviepage.id}` ,{
     method:"PUT",
     body:JSON.stringify(savemovie),
     headers:{"Content-Type":"application/json",},

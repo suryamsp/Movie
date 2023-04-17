@@ -5,6 +5,7 @@ import { useFormik } from 'formik';
 import * as yup from "yup";
 import Button from '@mui/material/Button';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import {API} from "./global";
 
 
 const formValidation=yup.object({
@@ -33,7 +34,7 @@ const navigate=useNavigate();
 
   const addmovie= async (newmovie)=>{ 
 
- await fetch("https://642594217ac292e3cf04af7d.mockapi.io/movieapi" ,{
+ await fetch(`${API}` ,{
     method:"POST",
     body:JSON.stringify(newmovie),
     headers:{"Content-Type":"application/json",},
